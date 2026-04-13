@@ -15,6 +15,7 @@ elseif currentPlaceId == MAPA_B then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/10-thousand-bees/paradoxxing/refs/heads/main/HMission.lua"))()
 elseif currentPlaceId == MAPA_C then
     print("[Paradoxxing]: Karakura - Loaded!"
+        
     loadstring(game:HttpGet("https://raw.githubusercontent.com/10-thousand-bees/paradoxxing/refs/heads/main/paradoxxing.lua"))()
     warn("i dont even know what this map is about, so im loading the main script")
         

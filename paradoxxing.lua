@@ -1,2 +1,391 @@
--- ver 1
-local g=(getfenv())local P,G,a_=(string.char),(string.byte),(bit32 .bxor)local Pb=function(Rb,Mb)local Va=''for la=231,(#Rb-1)+231 do Va=Va..P(a_(G(Rb,(la-231)+1),G(Mb,(la-231)%#Mb+1)))end return Va end if not(not g[Pb('\178\170','\237')].OFFSETS_DATA)then else g[Pb('\30|\ta\t','{\14')]'[Paradoxxing]: Use the main loader!'end local ia,u_,I=g[Pb('hp','7')].OFFSETS_DATA.Lighting,g[Pb('\234\242','\181')].OFFSETS_DATA.Atmosphere,g[Pb('\6\30','Y')].OFFSETS_DATA.Humanoid;g[Pb('tl','+')].ESP_COLOR_CRAWLER=g[Pb('\199\192\143\235\221\208','\132\175\227')].fromRGB(255,50,50);g[Pb('\20\f','K')].ESP_COLOR_FISHBONE=g[Pb('\a\141\185+\144\230','D\226\213')].fromRGB(50,130,255);g[Pb('\215\207','\136')].ESP_COLOR_SOUL=g[Pb('d\157\205H\128\146',"\'\242\161")].fromRGB(200,50,255);g[Pb('\129\153','\222')].ESP_COLOR_PLAYER=g[Pb('\134\149I\170\136\22','\197\250%')].fromRGB(50,255,100);g[Pb('\29\5','B')].ESP_COLOR_SHINIGAMI=g[Pb('\226\145\29\206\140B','\161\254q')].fromRGB(255,200,50);g[Pb('c\127','6')].AddTab('Paradoxxing',function(cb)local Ob=cb:Section('Enemies Visuals','Left');Ob:Toggle('crawler_esp','Crawler',false);Ob:ColorPicker('crawler_col',1,0.19,0.19,1,function(ja)g[Pb('\0\24','_')].ESP_COLOR_CRAWLER=ja end);Ob:SliderInt('crawler_dist','Crawler Distance',10,10000,500);Ob:Toggle('fishbone_esp','Fishbone',false);Ob:ColorPicker('fishbone_col',0.19,0.51000000000000001,1,1,function(_b)g[Pb('\223\199','\128')].ESP_COLOR_FISHBONE=_b end);Ob:SliderInt('fishbone_dist','Fishbone Distance',10,10000,500);Ob:Toggle('soul_esp','Soul',false);Ob:ColorPicker('soul_col',0.78000000000000003,0.19,1,1,function(Za)g[Pb('\189\165','\226')].ESP_COLOR_SOUL=Za end);Ob:SliderInt('soul_dist','Soul Distance',10,10000,500);Ob:Toggle('shinigami_esp','Shinigami',false);Ob:ColorPicker('shinigami_col',1,0.78000000000000003,0.19,1,function(F)g[Pb('\225\249','\190')].ESP_COLOR_SHINIGAMI=F end);Ob:SliderInt('shinigami_dist','Shinigami Distance',10,10000,500)local Z=cb:Section('Race Teller','Left');Z:Toggle('race_esp','Enabled',false);Z:ColorPicker('race_col',0.19,1,0.39000000000000001,1,function(Fb)g[Pb('|d','#')].ESP_COLOR_PLAYER=Fb end);Z:SliderInt('race_dist','Distance',10,10000,500);Z:Combo('race_type','Race',{'Adjuchas','Menos','Arrancar','Fishbone'},0)local o_=cb:Section('Visuals','Right');o_:Toggle('no_fog','No Fog',false)local h=cb:Section('Combat','Right');h:Toggle('better_flashstep','Better Flashstep',false);h:SliderFloat('flashstep_speed','Boost Speed',50,500,150,'%.0f');h:SliderFloat('flashstep_duration','Boost Duration',0.050000000000000003,1,0.29999999999999999,'%.2f')end)local m,aa,D=g[Pb('%\127/{','B\30')]:GetService'RunService',g[Pb('L~Fz','+\31')]:GetService'Players',g[Pb('\180\153\190\157','\211\248')]:GetService'Lighting'local function Oa(M,za)local ka,Pa=g[Pb('\29G\fH\1','m$')](g[Pb('/\b\136N\135;2\151D\148&','Bm\229!\245')],'float',M+za)return ka and Pa or 0 end local function L(ib,N,Bb)g[Pb('\241-\224\"\237','\129N')](function()g[Pb('\195d\27\251\149\146\241v\4\253\147\142','\174\1v\148\231\235')]('float',ib+N,Bb)end)end local y={}local function Ma()g[Pb('\129\244\144\251\157','\241\151')](function()local x=D.Address;y.FogEnd=Oa(x,ia.FogEnd);y.FogStart=Oa(x,ia.FogStart)end)local sb=D:FindFirstChildOfClass'Atmosphere'if sb then g[Pb('$\24\53\23\56','T{')](function()local Gb=sb.Address;y.AtmoDensity=Oa(Gb,u_.Density);y.AtmoHaze=Oa(Gb,u_.Haze);y.AtmoGlare=Oa(Gb,u_.Glare)end)end end Ma()local ya=false local function pa(pb)g[Pb('\177]\160R\173','\193>')](function()local Ib=D.Address;L(Ib,ia.FogEnd,pb and 100000000 or(y.FogEnd or 100000));L(Ib,ia.FogStart,pb and 100000000 or(y.FogStart or 0))end)local R=D:FindFirstChildOfClass'Atmosphere'if not(R)then else g[Pb('\176\146\161\157\172','\192\241')](function()local ub=R.Address;L(ub,u_.Density,pb and 0 or(y.AtmoDensity or 0.39500000000000002));L(ub,u_.Haze,pb and 0 or(y.AtmoHaze or 0));L(ub,u_.Glare,pb and 0 or(y.AtmoGlare or 0))end)end end local yb,bb=false,0;m.Heartbeat:Connect(function()local jb=g[Pb('+7','~')].GetValue'better_flashstep'or false if not(not jb)then else yb=false return end local da=aa.LocalPlayer local qb=da and da.Character if not(not qb)then else return end local i_,S=qb:FindFirstChild'HumanoidRootPart',qb:FindFirstChild'Head'if not i_ or not S then return end local Nb,na=g[Pb('i%x*u','\25F')](function()return S.Transparency end)local Xa,Qa,ta=Nb and na and na>=1,g[Pb('\229\249','\176')].GetValue'flashstep_speed'or 150,g[Pb('\144\140','\197')].GetValue'flashstep_duration'or 0.29999999999999999 if Xa and not yb then yb=true;bb=g[Pb('\226\188\245\190','\150\213')]()+ta end if not Xa and yb and g[Pb('\175s\184q','\219\26')]()>=bb then yb=false end if not(yb)then else local r_,q=i_.AssemblyLinearVelocity,i_.CFrame.LookVector local U=g[Pb('\193\130A\227\136P\164','\151\231\"')].new(q.X,0,q.Z).Unit local f_=U*Qa;g[Pb('o\174~\161s','\31\205')](function()i_.AssemblyLinearVelocity=g[Pb('\28q\17>{\0y','J\20r')].new(f_.X,r_.Y,f_.Z)end)end end)local ob,va,ba,ab={'Adjuchas','Menos','Arrancar','Fishbone'},{},{},{}local function B(Ea,Aa)if not(ba[Aa]and ba[Aa].Parent)then else return ba[Aa]end local kb=Ea:FindFirstChild'HumanoidRootPart'or Ea:FindFirstChildOfClass'BasePart'if not(kb)then else ba[Aa]=kb end return kb end local function J(ga,Ra)local O=Ra and(ga..'_'..Ra)or ga if not va[O]then local ra=g[Pb('\19\175\196 \180\203\48','W\221\165')].new'Text';ra.Visible=false;ra.Size=14;ra.Center=true;ra.Outline=true;va[O]=ra end return va[O]end local function d_(La,Ka)if not(not La or not Ka)then else return nil end local E,b_=g[Pb('\30V\15Y\2','n5')](function()return(g[Pb('\173\242\233\143\248\248\200','\251\151\138')].new(La.X,La.Y,La.Z)-g[Pb('\185\56\179\155\50\162\220','\239]\208')].new(Ka.X,Ka.Y,Ka.Z)).Magnitude end)return E and b_ or nil end local function db(Ga)if not(not Ga)then else return nil end local Ua,Ja,V=g[Pb('\143E\158J\147','\255&')](function()return g[Pb('i8.cw\5Q\4?}v4P','>W\\\15\19Q')](g[Pb('\156\24\196\190\18\213\249','\202}\167')].new(Ga.X,Ga.Y,Ga.Z))end)if not(not Ua or not V or not Ja)then else return nil end return Ja end local function Ca(oa)local _a=oa:FindFirstChildOfClass'Humanoid'if not(not _a)then else return false end return(_a.Health or 0)<=0 end local function Hb(fa_)local vb=fa_:FindFirstChildOfClass'Humanoid'if not(not vb)then else return 0,100 end return vb.Health or 0,vb.MaxHealth or 100 end local function e_()local ca=aa.LocalPlayer if not(not ca)then else return nil end local wa=ca.Character if not wa then return nil end return wa:FindFirstChild'HumanoidRootPart'or nil end local function nb(X)if not X then return nil end local ea,Fa=g[Pb('\172*\189%\176','\220I')](function()return X.Position end)if not(not ea or not Fa)then else return nil end local Ya,H=g[Pb('\221 \204/\193','\173C')](function()return g[Pb('\161L\4\131F\21\196','\247)g')].new(Fa.X,Fa.Y,Fa.Z)end)return Ya and H or nil end local Ba={}local function ha()local qa={}for Ta,z in g[Pb('e\161Ne\163\\','\f\209/')](aa:GetPlayers())do if z and z.Name then qa[z.Name]=true end end Ba=qa end ha()local Lb,xa,Wa={{prefix='Crawler',label='Crawler',uiKey='crawler_esp',distKey='crawler_dist',colorKey='ESP_COLOR_CRAWLER'},{prefix='Fishbone',label='Fishbone',uiKey='fishbone_esp',distKey='fishbone_dist',colorKey='ESP_COLOR_FISHBONE'},{prefix='Soul',label='Soul',uiKey='soul_esp',distKey='soul_dist',colorKey='ESP_COLOR_SOUL'},{prefix='Shinigami',label='Shinigami',uiKey='shinigami_esp',distKey='shinigami_dist',colorKey='ESP_COLOR_SHINIGAMI'}},0,0 local function Na(rb)for ua,Ab in g[Pb('\168\136\177\155\171','\216\233')](va)do local Kb=ua:gsub('_name$',''):gsub('_hp$','')if not rb[Kb]then Ab:Remove();va[ua]=nil end end for K in g[Pb('\151\3\142\16\148','\231b')](ba)do if not(not rb[K])then else ba[K]=nil end end end m.RenderStepped:Connect(function()xa=xa+1 local A=g[Pb('\162\190','\247')].GetValue'no_fog'or false if A~=ya then ya=A;pa(ya)end local Sa=g[Pb('\242j\r\21\246u\30\29\224','\133\5\127~')]:FindFirstChild'Alive'if not Sa then return end if not(xa-Wa>=10)then else ab=Sa:GetChildren();Wa=xa end local W=e_()local T=nb(W)if not(xa%60==0)then else local k={}for Q,Ha in g[Pb('(\f\210(\14\192','A|\179')](ab)do k[g[Pb('j\226\"\181l\228?\166','\30\141Q\193')](Ha)]=true end g[Pb('\211\207\194\192\207','\163\172')](Na,k);g[Pb('W\28F\19K',"\'\127")](ha)end for v,t_ in g[Pb('\243b%\243\96\55','\154\18D')](Lb)do local c,n_,eb=g[Pb('\150\138','\195')].GetValue(t_.uiKey),g[Pb('\186\166','\239')].GetValue(t_.distKey),g[Pb('\127g',' ')][t_.colorKey]or g[Pb('\220K}\240V\"','\159$\17')].fromRGB(255,255,255)for Y,gb in g[Pb('s\189\181s\191\167','\26\205\212')](ab)do g[Pb('u\130d\141i','\5\225')](function()if not(not gb:IsA'Model'or not gb.Name:find(t_.prefix))then else return end local j=g[Pb('\196t\167q\194r\186b','\176\27\212\5')](gb)local w_=J(j)if not c then w_.Visible=false return end if not(Ca(gb))then else w_.Visible=false return end local mb=B(gb,j)local hb=nb(mb)if not(not hb)then else w_.Visible=false return end if T then local zb=d_(hb,T)if not zb or zb>n_ then w_.Visible=false return end end local p=db(hb)if not p then w_.Visible=false return end w_.Visible=true;w_.Text=t_.label;w_.Position=g[Pb('?\168\232\29\162\249[','i\205\139')].new(p.X,p.Y-10);w_.Color=eb end)end end local l_=g[Pb('\164\184','\241')].GetValue'race_esp'if not l_ then return end local tb,fb,xb=g[Pb('\144\140','\197')].GetValue'race_type',g[Pb(':&','o')].GetValue'race_dist',g[Pb('\4\28','[')].ESP_COLOR_PLAYER or g[Pb('?GI\19Z\22','|(%')].fromRGB(50,255,100)local Ia=ob[(tb or 0)+1]for Qb,Cb in g[Pb('\5\255\235\5\253\249','l\143\138')](ab)do g[Pb('\27)\n&\a','kJ')](function()if not Cb:IsA'Model'then return end if not(not Ba[Cb.Name])then else return end local C=g[Pb('\216\149\167\3\222\147\186\16','\172\250\212w')](Cb)local ma,sa,Da=J(C,'name'),J(C,'hp'),Cb:GetAttribute'EntityType'if Da~=Ia then ma.Visible=false;sa.Visible=false return end local Eb=B(Cb,C)local Db=nb(Eb)if not(not Db)then else ma.Visible=false;sa.Visible=false return end if not(T)then else local wb=d_(Db,T)if not(not wb or wb>fb)then else ma.Visible=false;sa.Visible=false return end end local lb=db(Db)if not lb then ma.Visible=false;sa.Visible=false return end local s_,Jb=Hb(Cb);ma.Visible=true;ma.Text=Cb.Name;ma.Position=g[Pb('7P\19\21Z\2S','a5p')].new(lb.X,lb.Y-24);ma.Color=xb;sa.Visible=true;sa.Text=g[Pb('\139\254\188\145\228\169','\248\138\206')].format('%.0f/%.0f HP',s_,Jb);sa.Position=g[Pb('\218P\227\248Z\242\190','\140\53\128')].new(lb.X,lb.Y-10);sa.Color=g[Pb('\171\175\228\135\178\187','\232\192\136')].fromRGB(100,255,100)end)end end)
+-- Paradoxxing.lua -> script principal.
+-- espero que essa porra offset autoupdater tenha funcionado
+
+if not _G.OFFSETS_DATA then
+    error("[Paradoxxing]: Use the main loader!")
+end
+
+local OFF_Lighting   = _G.OFFSETS_DATA.Lighting
+local OFF_Atmosphere = _G.OFFSETS_DATA.Atmosphere
+local OFF_Humanoid   = _G.OFFSETS_DATA.Humanoid
+
+
+_G.ESP_COLOR_CRAWLER   = Color3.fromRGB(255, 50,  50)
+_G.ESP_COLOR_FISHBONE  = Color3.fromRGB(50,  130, 255)
+_G.ESP_COLOR_SOUL      = Color3.fromRGB(200, 50,  255)
+_G.ESP_COLOR_PLAYER    = Color3.fromRGB(50,  255, 100)
+_G.ESP_COLOR_SHINIGAMI = Color3.fromRGB(255, 200, 50)
+
+UI.AddTab("Paradoxxing", function(tab)
+
+    local sec = tab:Section("Enemies Visuals", "Left")
+    sec:Toggle("crawler_esp", "Crawler", false)
+    sec:ColorPicker("crawler_col", 1, 0.19, 0.19, 1, function(color)
+        _G.ESP_COLOR_CRAWLER = color
+    end)
+    sec:SliderInt("crawler_dist", "Crawler Distance", 10, 10000, 500)
+
+    sec:Toggle("fishbone_esp", "Fishbone", false)
+    sec:ColorPicker("fishbone_col", 0.19, 0.51, 1, 1, function(color)
+        _G.ESP_COLOR_FISHBONE = color
+    end)
+    sec:SliderInt("fishbone_dist", "Fishbone Distance", 10, 10000, 500)
+
+    sec:Toggle("soul_esp", "Soul", false)
+    sec:ColorPicker("soul_col", 0.78, 0.19, 1, 1, function(color)
+        _G.ESP_COLOR_SOUL = color
+    end)
+    sec:SliderInt("soul_dist", "Soul Distance", 10, 10000, 500)
+
+    sec:Toggle("shinigami_esp", "Shinigami", false)
+    sec:ColorPicker("shinigami_col", 1, 0.78, 0.19, 1, function(color)
+        _G.ESP_COLOR_SHINIGAMI = color
+    end)
+    sec:SliderInt("shinigami_dist", "Shinigami Distance", 10, 10000, 500)
+
+    local race = tab:Section("Race Teller", "Left")
+    race:Toggle("race_esp", "Enabled", false)
+    race:ColorPicker("race_col", 0.19, 1, 0.39, 1, function(color)
+        _G.ESP_COLOR_PLAYER = color
+    end)
+    race:SliderInt("race_dist", "Distance", 10, 10000, 500)
+    race:Combo("race_type", "Race", {"Adjuchas", "Menos", "Arrancar", "Fishbone"}, 0)
+
+    local vis = tab:Section("Visuals", "Right")
+    vis:Toggle("no_fog", "No Fog", false)
+
+    local combat = tab:Section("Combat", "Right")
+    combat:Toggle("better_flashstep", "Better Flashstep", false)
+    combat:SliderFloat("flashstep_speed",    "Boost Speed",    50,  500, 150, "%.0f")
+    combat:SliderFloat("flashstep_duration", "Boost Duration", 0.05, 1.0, 0.3, "%.2f")
+end)
+
+local RunService = game:GetService("RunService")
+local Players    = game:GetService("Players")
+local Lighting   = game:GetService("Lighting")
+
+local function memReadFloat(base, offset)
+    local ok, v = pcall(memory_read, "float", base + offset)
+    return ok and v or 0
+end
+
+local function memWriteFloat(base, offset, value)
+    pcall(function()
+        memory_write("float", base + offset, value)
+    end)
+end
+
+local orig = {}
+
+local function saveOriginals()
+    pcall(function()
+        local base = Lighting.Address
+        orig.FogEnd   = memReadFloat(base, OFF_Lighting.FogEnd)
+        orig.FogStart = memReadFloat(base, OFF_Lighting.FogStart)
+    end)
+    local atmo = Lighting:FindFirstChildOfClass("Atmosphere")
+    if atmo then
+        pcall(function()
+            local base = atmo.Address
+            orig.AtmoDensity = memReadFloat(base, OFF_Atmosphere.Density)
+            orig.AtmoHaze    = memReadFloat(base, OFF_Atmosphere.Haze)
+            orig.AtmoGlare   = memReadFloat(base, OFF_Atmosphere.Glare)
+        end)
+    end
+end
+saveOriginals()
+
+local fogActive = false
+
+local function applyNoFog(enabled)
+    pcall(function()
+        local base = Lighting.Address
+        memWriteFloat(base, OFF_Lighting.FogEnd,   enabled and 1e8 or (orig.FogEnd   or 100000))
+        memWriteFloat(base, OFF_Lighting.FogStart, enabled and 1e8 or (orig.FogStart or 0))
+    end)
+    local atmo = Lighting:FindFirstChildOfClass("Atmosphere")
+    if atmo then
+        pcall(function()
+            local base = atmo.Address
+            memWriteFloat(base, OFF_Atmosphere.Density, enabled and 0 or (orig.AtmoDensity or 0.395))
+            memWriteFloat(base, OFF_Atmosphere.Haze,    enabled and 0 or (orig.AtmoHaze    or 0))
+            memWriteFloat(base, OFF_Atmosphere.Glare,   enabled and 0 or (orig.AtmoGlare   or 0))
+        end)
+    end
+end
+
+-- FlashStep que deu um trampo do caralho
+local fsActive = false
+local fsUntil  = 0
+
+RunService.Heartbeat:Connect(function()
+    local enabled = UI.GetValue("better_flashstep") or false
+    if not enabled then
+        fsActive = false
+        return
+    end
+
+    local lp   = Players.LocalPlayer
+    local char = lp and lp.Character
+    if not char then return end
+
+    local hrp  = char:FindFirstChild("HumanoidRootPart")
+    local head = char:FindFirstChild("Head")
+    if not hrp or not head then return end
+
+    local ok, trans       = pcall(function() return head.Transparency end)
+    local isFlashstepping = ok and trans and trans >= 1
+
+    local boostSpeed    = UI.GetValue("flashstep_speed")    or 150
+    local boostDuration = UI.GetValue("flashstep_duration") or 0.3
+
+    if isFlashstepping and not fsActive then
+        fsActive = true
+        fsUntil  = tick() + boostDuration
+    end
+
+    if not isFlashstepping and fsActive and tick() >= fsUntil then
+        fsActive = false
+    end
+
+    if fsActive then
+        local vel     = hrp.AssemblyLinearVelocity
+        local look    = hrp.CFrame.LookVector
+        local dir     = Vector3.new(look.X, 0, look.Z).Unit
+        local boosted = dir * boostSpeed
+        pcall(function()
+            hrp.AssemblyLinearVelocity = Vector3.new(boosted.X, vel.Y, boosted.Z)
+        end)
+    end
+end)
+
+-- Esse esp é de que, lucas?
+-- race teller
+local RACE_VALUES = {"Adjuchas", "Menos", "Arrancar", "Fishbone"}
+local labels      = {}
+local rootCache   = {}
+local aliveCache  = {}
+
+local function getRootPart(model, key)
+    if rootCache[key] and rootCache[key].Parent then return rootCache[key] end
+    local root = model:FindFirstChild("HumanoidRootPart") or model:FindFirstChildOfClass("BasePart")
+    if root then rootCache[key] = root end
+    return root
+end
+
+local function getLabel(key, suffix)
+    local k = suffix and (key .. "_" .. suffix) or key
+    if not labels[k] then
+        local l   = Drawing.new("Text")
+        l.Visible = false
+        l.Size    = 14
+        l.Center  = true
+        l.Outline = true
+        labels[k] = l
+    end
+    return labels[k]
+end
+
+local function safeDist(a, b)
+    if not a or not b then return nil end
+    local ok, result = pcall(function()
+        return (Vector3.new(a.X, a.Y, a.Z) - Vector3.new(b.X, b.Y, b.Z)).Magnitude
+    end)
+    return ok and result or nil
+end
+
+local function safeWorldToScreen(pos3d)
+    if not pos3d then return nil end
+    local ok, pos, onScreen = pcall(function()
+        return WorldToScreen(Vector3.new(pos3d.X, pos3d.Y, pos3d.Z))
+    end)
+    if not ok or not onScreen or not pos then return nil end
+    return pos
+end
+
+local function isDead(model)
+    local hum = model:FindFirstChildOfClass("Humanoid")
+    if not hum then return false end
+    return (hum.Health or 0) <= 0
+end
+
+local function getHealth(model)
+    local hum = model:FindFirstChildOfClass("Humanoid")
+    if not hum then return 0, 100 end
+    return hum.Health or 0, hum.MaxHealth or 100
+end
+
+local function getPlayerRoot()
+    local lp = Players.LocalPlayer
+    if not lp then return nil end
+    local char = lp.Character
+    if not char then return nil end
+    return char:FindFirstChild("HumanoidRootPart") or nil
+end
+
+local function safePos(root)
+    if not root then return nil end
+    local ok, pos = pcall(function() return root.Position end)
+    if not ok or not pos then return nil end
+    local ok2, v = pcall(function() return Vector3.new(pos.X, pos.Y, pos.Z) end)
+    return ok2 and v or nil
+end
+
+local playerNamesCache = {}
+local function refreshPlayerNames()
+    local names = {}
+    for _, p in ipairs(Players:GetPlayers()) do
+        if p and p.Name then names[p.Name] = true end
+    end
+    playerNamesCache = names
+end
+refreshPlayerNames()
+--lembrar de adicionar esp por aqui, mais facil
+local PREFIXES = {
+    { prefix = "Crawler",   label = "Crawler",   uiKey = "crawler_esp",   distKey = "crawler_dist",   colorKey = "ESP_COLOR_CRAWLER"   },
+    { prefix = "Fishbone",  label = "Fishbone",  uiKey = "fishbone_esp",  distKey = "fishbone_dist",  colorKey = "ESP_COLOR_FISHBONE"  },
+    { prefix = "Soul",      label = "Soul",      uiKey = "soul_esp",      distKey = "soul_dist",      colorKey = "ESP_COLOR_SOUL"      },
+    { prefix = "Shinigami", label = "Shinigami", uiKey = "shinigami_esp", distKey = "shinigami_dist", colorKey = "ESP_COLOR_SHINIGAMI" },
+}
+
+local cleanupTick    = 0
+local aliveCacheTick = 0
+
+local function cleanup(existing)
+    for key, lbl in pairs(labels) do
+        local baseKey = key:gsub("_name$", ""):gsub("_hp$", "")
+        if not existing[baseKey] then
+            lbl:Remove()
+            labels[key] = nil
+        end
+    end
+    for key in pairs(rootCache) do
+        if not existing[key] then rootCache[key] = nil end
+    end
+end
+
+RunService.RenderStepped:Connect(function()
+    cleanupTick = cleanupTick + 1
+
+    local noFogNow = UI.GetValue("no_fog") or false
+    if noFogNow ~= fogActive then
+        fogActive = noFogNow
+        applyNoFog(fogActive)
+    end
+
+    local alive = workspace:FindFirstChild("Alive")
+    if not alive then return end
+
+    if cleanupTick - aliveCacheTick >= 10 then
+        aliveCache     = alive:GetChildren()
+        aliveCacheTick = cleanupTick
+    end
+
+    local playerRoot = getPlayerRoot()
+    local playerPos  = safePos(playerRoot)
+
+    if cleanupTick % 60 == 0 then
+        local existing = {}
+        for _, model in ipairs(aliveCache) do existing[tostring(model)] = true end
+        pcall(cleanup, existing)
+        pcall(refreshPlayerNames)
+    end
+
+    for _, cfg in ipairs(PREFIXES) do
+        local espEnabled = UI.GetValue(cfg.uiKey)
+        local maxDist = UI.GetValue(cfg.distKey)
+        local color   = _G[cfg.colorKey] or Color3.fromRGB(255, 255, 255)
+
+        for _, model in ipairs(aliveCache) do
+            pcall(function()
+                if not model:IsA("Model") or not model.Name:find(cfg.prefix) then return end
+
+                local key = tostring(model)
+                local lbl = getLabel(key)
+
+                if not espEnabled then lbl.Visible = false return end
+
+                if isDead(model) then lbl.Visible = false return end
+
+                local root = getRootPart(model, key)
+                local rPos = safePos(root)
+                if not rPos then lbl.Visible = false return end
+
+                if playerPos then
+                    local dist = safeDist(rPos, playerPos)
+                    if not dist or dist > maxDist then lbl.Visible = false return end
+                end
+
+                local pos = safeWorldToScreen(rPos)
+                if not pos then lbl.Visible = false return end
+
+                lbl.Visible  = true
+                lbl.Text     = cfg.label
+                lbl.Position = Vector2.new(pos.X, pos.Y - 10)
+                lbl.Color    = color
+            end)
+        end
+    end
+
+    local raceEnabled  = UI.GetValue("race_esp")
+    if not raceEnabled then return end
+
+    local raceIdx      = UI.GetValue("race_type")
+    local raceDist     = UI.GetValue("race_dist")
+    local raceColor    = _G.ESP_COLOR_PLAYER or Color3.fromRGB(50, 255, 100)
+    local selectedRace = RACE_VALUES[(raceIdx or 0) + 1]
+
+    for _, model in ipairs(aliveCache) do
+        pcall(function()
+            if not model:IsA("Model") then return end
+            if not playerNamesCache[model.Name] then return end
+
+            local key     = tostring(model)
+            local lblName = getLabel(key, "name")
+            local lblHp   = getLabel(key, "hp")
+            local entityType = model:GetAttribute("EntityType")
+
+            if entityType ~= selectedRace then
+                lblName.Visible = false
+                lblHp.Visible   = false
+                return
+            end
+
+            local root = getRootPart(model, key)
+            local rPos = safePos(root)
+            if not rPos then
+                lblName.Visible = false
+                lblHp.Visible   = false
+                return
+            end
+
+            if playerPos then
+                local dist = safeDist(rPos, playerPos)
+                if not dist or dist > raceDist then
+                    lblName.Visible = false
+                    lblHp.Visible   = false
+                    return
+                end
+            end
+
+            local pos = safeWorldToScreen(rPos)
+            if not pos then
+                lblName.Visible = false
+                lblHp.Visible   = false
+                return
+            end
+
+            local hp, maxHp = getHealth(model)
+
+            lblName.Visible  = true
+            lblName.Text     = model.Name
+            lblName.Position = Vector2.new(pos.X, pos.Y - 24)
+            lblName.Color    = raceColor
+
+            lblHp.Visible  = true
+            lblHp.Text     = string.format("%.0f/%.0f HP", hp, maxHp)
+            lblHp.Position = Vector2.new(pos.X, pos.Y - 10)
+            lblHp.Color    = Color3.fromRGB(100, 255, 100)
+        end)
+    end
+end)

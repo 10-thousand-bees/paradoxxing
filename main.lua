@@ -1,2 +1,53 @@
+--para fins de discernimento, esse script ta na versão 1
+local MAPA_HUECO_MUNDO = 10705063265
+local MAPA_MISSION = 137886107419750
+local KARAKURA_TOWN = 15998522552
 
-local b_,j,v=(string.char),(string.byte),(bit32 .bxor)local k=function(a_,s_)local e_=''for u_=44,(#a_-1)+44 do e_=e_..b_(v(j(a_,(u_-44)+1),j(s_,(u_-44)%#s_+1)))end return e_ end local q,r_=(string.gsub),(string.char)local p=(function(h)h=q(h,'[^ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=]','')return(h:gsub('.',function(x)if(x=='=')then return''end local d_,n_='',(('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'):find(x)-1)for m=6,1,-1 do d_=d_..(n_%2^m-n_%2^(m-1)>0 and'1'or'0')end return d_ end):gsub('%d%d%d?%d?%d?%d?%d?%d?',function(l_)if(#l_~=8)then return''end local w_=0 for i_=1,8 do w_=w_+(l_:sub(i_,i_)=='1'and 2^(8-i_)or 0)end return r_(w_)end))end)local function c()print(k('\30\29\219\208J\146Q\143M\205\"\31\24w\154\238D\151Z\158[\195bVk','EM\186\162+\246>\247\53\164Lx'))local o_,t_=pcall(function()loadstring(game.HttpGet(game,k(p'ImGNlg5GHnYUWe5tQoj6K7aYqP4vBQY1i11858kYv5xh1qsseejSxlUyZrBxZ3ecgw5TQTgUWf0sXZnnLaTVr+gsBEoygEh9+pJbvZpi1vV6Mu/f3VNva6t0',p'ShX55n18MVlmOJlDJeGOQ8P63Y1Kd2Va5SkZib023PMM+ZocVJy6qSBBB94V')))()end)if not o_ then warn(k('\5\250R\0S\145\52~\173\194\233\146\144\172\151b\25\203\138\220\183I\240,\207G\0[\144-c\245\207\230\129\172\182\209S\25\211\198\222\176Q\181p','^\170\51r2\245[\6\213\171\135\245\205\150\183!v\190\230\184\217=\208')..tostring(t_));notify(k('A\200v\213v','\4\186'),k(',\24\216O\255\155\3Z\127j\b\18\219^\171\132\24[v-^','\127w\181*\139\243j4\24J'),5);warn(k('\184\220H\136\202\3\23g\167=Uw\26~\232\130\57\195.\202\129\133\154\203\133\219\v\133\133\2_a\230\23\16r_r\165\155\52\206\52\135\213\131\153\220\223','\241\186h\241\165v7\4\198Su\4\127\27\200\246Q\170]\230\161\230\245\165'))return false end if not _G.OFFSETS_DATA then warn(k("\224\23\236\156\24\51\23\177\254\23\f\52,O\174Q\169O\25\a&@\213\30\253\1\222\171-\4\'\141\199*#s\6\20\253z\252IV\19i\24\155\53",'\187G\141\238yWx\201\134~bSqu\142\20\219=vu\6m\245Q'))return false end return true end if not(c())then warn(k(p'USexN7j9s0NKWMy6Hwko0lwUKa4WH69ahcXMKONPHLB/PfOroMZvV78jv+q5T0ER1bgsRyj2QRYivVBWglLLw8gn9hsNvDpp+O6igA==',p'CnfQRdmZ3DsyMaLdQjMIgTN5TNp+dsE9pbepRII7edRfSZyL1K4='))else local g,f_=_G.OFFSETS_DATA,game.PlaceId if not(f_==10705063265)then if not(f_==137886107419750)then if f_==15998522552 then print(k('\240\56\206\168\217\157\130\222\178>\174\245:J\234\218\222\30\199\192\29\221\187\152\173\130\209\164v\224\191G<\165\240\219\t\194\138','\171h\175\218\184\249\237\166\202W\192\146gp\202\145\191l\166'));loadstring(game.HttpGet(game,k(p'gBmm0DD824uCsplMTkGmr6h5hcBxK9TGfMqBkgqE1wvqquyCsKYBvmxG9AZatF+NCKGPM6eGxZS8lhpARrXor36WwDsx0sh2zcuRH8PaS/fkr9P5vRGpcFvyRlLsXA==',p'6G3SoEPG9KTw0+5iKSjSx90b8LMUWbepEr7k/H6qtGSHhd2yndJp0Rk1lWg+mT0=')))();warn(k("\22\186\16\227\144\173\241\169\'\182\147\216\57\14\169\138\24\150\f\129A{;\156b\159\24\249\222\224\227\186u\182\144\194mY\187\140H\138\f\146Q{;\156",'B\210y\144\176\192\144\217\a\223\224\182M.\218\255h\230c\243\53\30_\178'))else warn(k('#\f\133m\241\56J\169\199\29\2\226\180\230\139\172\22\55\138p\231\50\5\150\222\25\t\170\190\179\217\149\28','x\\\228\31\144\\%\209\191tl\133\233\220\171\249')..tostring(f_))end else print(k('\226R*\210\161\56\17\236\144q@\195\53\148i\146\249\129&\208m%\128\144\48\31\247\141\56\3\132$\193(\187\245\150t','\185\2K\160\192\\~\148\232\24.\164h\174I\223\144\242U'));loadstring(game.HttpGet(game,k(p'eq9yDu3w295bEk5hh1UOSfX8sx1ef4aApYapdR0t/PKZdeRFENtpymN+hhRbP7ljG+3lhJBbEl0gmEQTT+extAtdfsqHrpOoaEZu/vSadZ04VNxyzHljyRZKcw==',p'EtsGfp7K9PEpczlP4Dx6IYCexm47DeXvy/LMG2kDn530WtV1Pa8BpRYN53o/')))()end else print(k('\169\b\149\224\159\175\251\198\188\57\31\4}<<\244\222\a\145\55\212\223\139\165\240\209\228}Q/Ogx\217\207C','\242X\244\146\254\203\148\190\196Pqc \6\28\188\171b'));loadstring(game.HttpGet(game,k(p'9vIJoc5Qjg66iGvuW0Qta1wa1BjlQxK0oo+5PVrvAqdaxwfk/HhblfHPR91ziof74w7+zQvTQKyGZLhVQz4sWx3HGK9ZFLqoiPM+T6gP50eJRLW1Y0uC7dJBnXvShA==',p'noZ90b1qoSHI6RzAPC1ZAyl4oWuAMXHbzPvcUy7BYcg36DbU0Qwz+oS8JrMXp+U=')))()end end
+local OFFSETS_URL = "https://raw.githubusercontent.com/10-thousand-bees/paradoxxing/refs/heads/main/offsets.lua"
+
+local function loadOffsets()
+    print("[Paradoxxing]: Loading...")
+    
+    local success, err = pcall(function()
+        loadstring(game:HttpGet(OFFSETS_URL))()
+    end)
+
+    if not success then
+        warn("[Paradoxxing]: Couldnt retrieve data from file." .. tostring(err))
+        notify("Error", "Something went wrong!", 5)
+		warn("If you can see this, contact the Dev immediately.")
+        return false
+    end
+
+    if not _G.OFFSETS_DATA then
+        warn("[Paradoxxing]: Error - OFFSETS_DATA wasn't found")
+        return false
+    end
+
+    return true
+end
+
+if loadOffsets() then
+    local offsets = _G.OFFSETS_DATA
+    
+    local currentPlaceId = game.PlaceId
+
+    if currentPlaceId == MAPA_HUECO_MUNDO then
+    
+        print("[Paradoxxing]: Hueco Mundo - Loaded!")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/10-thousand-bees/paradoxxing/refs/heads/main/paradoxxing.lua"))()
+
+    elseif currentPlaceId == MAPA_MISSION then
+        print("[Paradoxxing]: Mission Place - Loaded!")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/10-thousand-bees/paradoxxing/refs/heads/main/HMission.lua"))()
+
+    elseif currentPlaceId == KARAKURA_TOWN then
+        print("[Paradoxxing]: Karakura Town! - Loaded!")
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/10-thousand-bees/paradoxxing/refs/heads/main/paradoxxing.lua"))()
+        warn("This map isnt supported. Main script was loaded.")
+    else
+         warn("[Paradoxxing]: Unknown Game/World" .. tostring(currentPlaceId))
+    end
+else
+    warn("[Paradoxxing]: Something related to the offsets went wrong. Contact the dev.")
+end

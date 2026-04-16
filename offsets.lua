@@ -1,5 +1,5 @@
 _G.OFFSETS_DATA = {
-    version = "version-26c90be22e0d4758",
+    version = "version-9d412f44a6fe4081",
     Lighting = {
         Ambient = 0xd8,
         OutdoorAmbient = 0x108,
